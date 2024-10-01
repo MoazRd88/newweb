@@ -1,0 +1,288 @@
+:root {
+  --primary-color: #035e7a;  /* Deep indigo */
+  --secondary-color: #00e5ff;  /* Cyan */
+  --background-color: #121212;  /* Dark background */
+  --text-color: #ffffff;
+  --accent-color: #02e4e4;  /* Pink accent */
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Asymmetrical Header */
+header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  padding: 3rem 0 6rem;
+  position: relative;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-text {
+  max-width: 60%;
+}
+
+header h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.profile-image-container {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--text-color);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  background-color: var(--background-color);  
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;  
+}
+
+
+nav {
+  background-color: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--accent-color);
+}
+
+/* Main Content */
+main {
+  padding: 4rem 0;
+}
+
+section {
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+section h2 {
+  color: var(--secondary-color);
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.social-icons a {
+  color: var(--text-color);
+  font-size: 1.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.social-icons svg {
+  width: 24px;
+  height: 24px;
+}
+
+
+footer {
+  background-color: rgba(255,255,255,0.05);
+  color: var(--text-color);
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+
+@media (max-width: 768px) {
+  header {
+      clip-path: none;
+      padding: 2rem 0;
+  }
+
+  .header-content {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .header-text {
+      max-width: 100%;
+      margin-bottom: 2rem;
+  }
+
+  header h1 {
+      font-size: 2.5rem;
+  }
+
+  .profile-image-container {
+      width: 200px;
+      height: 200px;
+  }
+
+  nav ul {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  nav ul li {
+      margin: 10px 0;
+  }
+}
+
+/* Collapsible Container Styles */
+.collapsible {
+  background-color: var(--primary-color);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.collapsible:hover {
+  background-color: var(--secondary-color);
+}
+
+.collapsible:after {
+  content: '\002B'; /* Plus symbol */
+  color: rgb(41, 39, 39);
+  font-weight: bold;
+  float: right;
+}
+
+.collapsible.active:after {
+  content: '\2212'; /* Minus symbol */
+}
+
+.collapsible-content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.collapsible-content p {
+  margin: 15px 0;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+main, header, footer {
+  position: relative;
+  z-index: 1; 
+}/* Content appears above the circles */
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+a:link {
+  color: rgb(5, 185, 185); /* Default link color */
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(5, 185, 185); /* Same color as a:link to prevent purple after click */
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgba(4, 253, 232, 0.89); /* Hover color */
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: rgba(4, 253, 232, 0.89); /* Color when the link is being clicked */
+  background-color: transparent;
+  text-decoration: underline;
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Prof. Dr. Hasan Engin Sener, Professor of Management of Organization at Ankara Yıldırım Beyazıt University">
+    <meta name="keywords" content="Hasan Engin Sener, Management, Organization, Ankara Yıldırım Beyazıt University, About">
+    <title>Integration Strategies Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        a:link {
+  color: rgb(5, 185, 185);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgba(240, 240, 240, 0.623);
+  background-color: transparent;
+  text-decoration: underline;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1></h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="research.html">Researches</a></li>
+                <li><a href="teaching.html">Courses</a></li>
+                <li><a href="cv.html">CV</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        
+        <form id="quizForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" required=""><br>
+        
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" required=""><br>
+        
+            <button type="button" onclick="startQuiz()">Start Quiz</button>
+        </form>
+        <script>
+            function startQuiz() {
+                var firstName = document.getElementById("firstName").value;
+                var lastName = document.getElementById("lastName").value;
+        
+                if (!firstName || !lastName) {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+        
+                var totalScore = 0;
+        
+                var integrationQuestions = [
+                    "A clothing manufacturer opening its own chain of retail stores to sell directly to consumers. What integration strategy does this represent?",
+                    "A healthcare company acquires a competitor to increase its market share. What integration strategy does this represent?",
+                    "Two banks merge to form a larger financial institution with a broader customer base. What integration strategy does this represent?",
+                    "An automobile manufacturer acquiring a steel production company to ensure a stable supply of raw materials. What integration strategy does this represent?",
+                    "A smartphone manufacturer opening flagship stores to sell directly to consumers. What integration strategy does this represent?",
+                    "A food processing company launching its own line of restaurants to sell its products directly. What integration strategy does this represent?",
+                    "A smartphone manufacturer acquiring a battery manufacturing company to control its power source. What integration strategy does this represent?",
+                    "A software company acquires a chain of physical stores to sell its software products. What integration strategy does this represent?",
+                    "A clothing brand acquiring a textile factory to control the production of fabrics. What integration strategy does this represent?",
+                    "An energy drink brand buys a company that supplies the primary ingredients for its beverages. What integration strategy does this represent?"
+                ];
+        
+                var correctAnswers = [
+                    "a", // Forward Integration
+                    "c", // Horizontal Integration
+                    "c", // Horizontal Integration
+                    "b", // Backward Integration
+                    "a", // Forward Integration
+                    "a", // Forward Integration
+                    "b", // Backward Integration
+                    "a", // Forward Integration
+                    "b", // Backward Integration
+                    "b"  // Backward Integration
+                ];
+        
+                var integrationComments = [
+                    "A clothing manufacturer opening its own chain of retail stores to sell directly to consumers. Forward integration refers to a company moving closer to the end consumer (e.g., opening retail stores).",
+        "A healthcare company acquires a competitor to increase its market share.  Horizontal integration refers to seeking ownership of or control over a firm’s competitors.",
+        "Two banks merge to form a larger financial institution with a broader customer base. Horizontal integration refers to seeking ownership of or control over a firm’s competitors.",
+        "An automobile manufacturer acquiring a steel production company to ensure a stable supply of raw materials. Backward integration involves moving closer to the source of production (e.g., acquiring suppliers).",
+        "A smartphone manufacturer opening flagship stores to sell directly to consumers. Forward integration refers to a company moving closer to the end consumer (e.g., opening retail stores).",
+        "A food processing company launching its own line of restaurants to sell its products directly. Forward integration refers to a company moving closer to the end consumer (e.g., opening retail stores).",
+        "A smartphone manufacturer acquiring a battery manufacturing company to control its power source. Backward integration involves moving closer to the source of production (e.g., acquiring suppliers).",
+        "A software company acquires a chain of physical stores to sell its software products. Forward integration refers to a company moving closer to the end consumer (e.g., opening retail stores).",
+        "A clothing brand acquiring a textile factory to control the production of fabrics. Backward integration involves moving closer to the source of production (e.g., acquiring suppliers).",
+        "An energy drink brand buys a company that supplies the primary ingredients for its beverages. Backward integration involves moving closer to the source of production (e.g., acquiring suppliers).",
+        
+         
+                 
+                ];
+        
+                var shuffledIndexes = Array.from({ length: integrationQuestions.length }, (_, i) => i);
+                shuffledIndexes.sort(() => Math.random() - 0.5);
+        
+                for (var i = 0; i < 5; ++i) {
+                    var index = shuffledIndexes[i];
+                    var userAnswer = prompt("Question " + (i + 1) + ":\n" + integrationQuestions[index] +
+                        "\n\nA) Forward Integration\nB) Backward Integration\nC) Horizontal Integration");
+        
+                    if (userAnswer) {
+                        var correctAnswer = correctAnswers[index];
+                        var isCorrect = userAnswer.toLowerCase() === correctAnswer;
+                        var resultMessage = isCorrect ? "Correct! 20 points." : "Wrong answer. The correct answer is " + correctAnswer.toUpperCase() + ".";
+                        var userAnswerMessage = "Your Answer: " + userAnswer.toUpperCase();
+        
+                        alert(resultMessage + "\n\n" + userAnswerMessage + "\n\nExplanation:\n" + integrationComments[index]);
+        
+                        if (isCorrect) {
+                            totalScore += 20;
+                        }
+                    } else {
+                        alert("Question " + (i + 1) + ": No answer provided. The correct answer is " + correctAnswers[index].toUpperCase() + ".\n\nExplanation:\n" + integrationComments[index]);
+                    }
+                }
+        
+                alert("Dear " + firstName + " " + lastName + "," +
+                    "\nYour Total Score: " + totalScore + " / 100" +
+                    "\nThank you for playing the Integration Strategies Quiz!" +
+                    "\n\n© Prof. Dr. Hasan Engin Şener");
+            }
+        </script>
+        <script>
+            document.addEventListener('contextmenu', event => event.preventDefault());
+        </script>
+        <style>
+            body {
+                user-select: none;
+            }
+        </style>
+        <script>
+            document.onkeydown = function (e) {
+                if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 65 || e.keyCode === 88)) {
+                    alert("Copying is disabled.");
+                    return false;
+                }
+            };
+        </script>
+
+    </main>
+</body>
+</html>
